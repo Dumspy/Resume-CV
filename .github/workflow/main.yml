@@ -22,7 +22,7 @@ jobs:
           pdfOptions: '{"format": "A4"}'
 
       - name: Upload PDF
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Upload PDF
           path: ./example.pdf
