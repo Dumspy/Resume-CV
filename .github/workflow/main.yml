@@ -1,6 +1,9 @@
 name: PDF Test
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   html_to_pdf:
