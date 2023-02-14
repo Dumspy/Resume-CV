@@ -1,28 +1,26 @@
 name: PDF Test
 
-on: 
+on:
   push:
     branches:
       - main
 
 jobs:
   html_to_pdf:
-    name: HTML to PDF
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: html to pdf
         uses: fifsky/html-to-pdf-action@master
         with:
-          htmlFile: ./example.html
-          pdfFile: ./example.pdf
+          htmlFile: ./index.html
+          outputFile: ./output.pdf
           pdfOptions: '{"format": "A4"}'
 
       - name: Upload PDF
         uses: actions/upload-artifact@v3
         with:
           name: Upload PDF
-          path: ./example.pdf
+          path: ./output.pdf
