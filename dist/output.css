@@ -549,6 +549,10 @@ video {
   justify-content: center;
 }
 
+.gap-4 {
+  gap: 1rem;
+}
+
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
