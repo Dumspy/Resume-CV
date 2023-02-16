@@ -8,7 +8,10 @@ module.exports = {
       },
       height: {
         a4: '297mm',
-      }
+      },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],
