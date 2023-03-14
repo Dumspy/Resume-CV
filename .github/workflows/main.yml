@@ -1,4 +1,4 @@
-name: PDF Test
+name: Create PDF
 
 on:
   push:
@@ -12,15 +12,35 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm build:css
+
       - name: html to pdf
         uses: LukaszLapaj/html-to-pdf-action@master
         with:
           htmlFile: ./src/index.html
-          outputFile: ./output.pdf
+          outputFile: ./cv.pdf
           pdfOptions: '{"format": "A4"}'
 
-      - name: Upload PDF
-        uses: actions/upload-artifact@v3
+      - name: Get Current Date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%d-%m_%H:%M:%S')"
+ 
+      - name: GH Release
+        uses: softprops/action-gh-release@v0.1.15
         with:
-          name: Upload PDF
-          path: ./output.pdf
+          tag_name: releases/${{ steps.date.outputs.date }}
+          files: ./cv.pdf
