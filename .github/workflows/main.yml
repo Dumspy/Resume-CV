@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Upload PDF
-          path: ./output.pdf
+          path: ./cv.pdf
 
       - name: Get Current Date
         id: date
