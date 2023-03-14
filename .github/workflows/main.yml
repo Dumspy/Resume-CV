@@ -35,6 +35,12 @@ jobs:
           outputFile: ./cv.pdf
           pdfOptions: '{"format": "A4"}'
 
+      - name: Upload PDF
+        uses: actions/upload-artifact@v3
+        with:
+          name: Upload PDF
+          path: ./output.pdf
+
       - name: Get Current Date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%d-%m_%H:%M:%S')"
