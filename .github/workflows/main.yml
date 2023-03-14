@@ -43,7 +43,7 @@ jobs:
 
       - name: Get Current Date
         id: date
-        run: echo "date=$(date +'%Y-%d-%m_%H:%M:%S')" >> $GITHUB_OUTPUT
+        run: echo "date=$(date +'%Y-%d-%m_%H.%M.%S')" >> $GITHUB_OUTPUT
       
       - name: GH Release
         uses: softprops/action-gh-release@v0.1.15
